@@ -511,13 +511,6 @@ function renderLayout({ title, description, current, body, isHome = false }) {
   <div class="site-shell">
     ${renderSidebar(current)}
     <main id="content" class="site-main">
-      <div class="mobile-brand">
-        <a href="/" aria-label="${site.title} home">
-          <img src="/assets/images/tlogo-1.png" alt="" width="48" height="48">
-          <span>${site.title}</span>
-        </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      </div>
       ${body}
       ${renderFooter()}
     </main>
@@ -529,31 +522,35 @@ function renderLayout({ title, description, current, body, isHome = false }) {
 
 function renderSidebar(current) {
   const navItems = [
-    ["home", "/", "Home"],
-    ["data", "/pages/understanding-data-and-law/", "Understanding the Data and Law"],
-    ["politics", "/pages/understanding-the-politics/", "Understanding the Politics"],
-    ["trackers", "/pages/trackers/", "Trackers"],
-    ["archive", "/pages/archive/", "Archive"],
+    ["home",     "/",                                   "Home"],
+    ["about",    "/pages/about/",                       "About Us"],
+    ["data",     "/pages/understanding-data-and-law/",  "Understanding the Data and Law"],
+    ["politics", "/pages/understanding-the-politics/",  "Understanding the Politics"],
+    ["analysis", "/pages/analysis/",                    "Analysis"],
   ];
   return `
-    <aside class="site-sidebar">
-      <div class="sidebar-inner">
-        <p class="project-by">A project by the <a href="https://takshashila.org.in/">Takshashila Institution</a></p>
-        <a class="brand" href="/">
-          <span>${site.title}</span>
-        </a>
-        <p class="tagline">${site.tagline}</p>
-        <img class="site-logo" src="/assets/images/tlogo-1.png" alt="" width="68" height="68">
-        <form class="subscribe-form" data-static-form>
-          <label class="screen-reader-text" for="subscribe-email">Email address</label>
-          <input id="subscribe-email" type="email" placeholder="Type your email..." autocomplete="email">
-          <button type="submit">Subscribe</button>
-        </form>
-        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-          ${navItems.map(([key, href, label]) => `<a href="${href}" ${current === key ? 'aria-current="page"' : ""}>${label}</a>`).join("")}
-        </nav>
+    <header class="site-header">
+      <div class="header-brand">
+        <img class="site-logo" src="/assets/images/tlogo-1.png" alt="" width="40" height="40">
+        <div class="header-title">
+          <a class="brand" href="/"><span>${site.title}</span></a>
+          <p class="tagline">${site.tagline}</p>
+        </div>
+        <div class="header-meta">
+          <p class="project-by">A project by the <a href="https://takshashila.org.in/">Takshashila Institution</a></p>
+          <form class="subscribe-form" data-static-form>
+            <label class="screen-reader-text" for="subscribe-email">Email address</label>
+            <input id="subscribe-email" type="email" placeholder="Type your email..." autocomplete="email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
       </div>
-    </aside>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <div class="nav-inner">
+          ${navItems.map(([key, href, label]) => `<a href="${href}"${current === key ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
+        </div>
+      </nav>
+    </header>
   `;
 }
 
