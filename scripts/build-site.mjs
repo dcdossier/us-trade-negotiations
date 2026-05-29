@@ -7,8 +7,8 @@ const API_BASE = "https://public-api.wordpress.com/wp/v2/sites/ustradetracker.wo
 const SOURCE_SITE = "https://ustradetracker.wordpress.com";
 
 const site = {
-  title: "U.S. Trade Tracker",
-  tagline: "Tracking the 2025 US Trade negotiations following US tariff announcements.",
+  title: "US Trade Negotiation Observatory",
+  tagline: "Tracking US Trade negotiations under the second Trump administration.",
   projectBy: "A project by the Takshashila Institution",
   source: SOURCE_SITE,
   license: "Creative Commons Attribution 4.0 International",
@@ -512,9 +512,9 @@ function renderLayout({ title, description, current, body, isHome = false }) {
     ${renderSidebar(current)}
     <main id="content" class="site-main">
       <div class="mobile-brand">
-        <a href="/" aria-label="U.S. Trade Tracker home">
+        <a href="/" aria-label="${site.title} home">
           <img src="/assets/images/tlogo-1.png" alt="" width="48" height="48">
-          <span>U.S. Trade Tracker</span>
+          <span>${site.title}</span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       </div>
@@ -540,7 +540,7 @@ function renderSidebar(current) {
       <div class="sidebar-inner">
         <p class="project-by">A project by the <a href="https://takshashila.org.in/">Takshashila Institution</a></p>
         <a class="brand" href="/">
-          <span>${site.title.replace(" ", "<br>")}</span>
+          <span>${site.title}</span>
         </a>
         <p class="tagline">${site.tagline}</p>
         <img class="site-logo" src="/assets/images/tlogo-1.png" alt="" width="68" height="68">
@@ -568,7 +568,7 @@ function renderFooter() {
       </section>
       <section>
         <h2>About</h2>
-        <p>US Trade Tracker is a project by the Indo-Pacific Studies Program of the Takshashila Institution.</p>
+        <p>${site.title} is a project by the Indo-Pacific Studies Program of the Takshashila Institution.</p>
         <p>The project is managed by Abhishek Kadiyala, a Research Analyst with the Indo-Pacific Studies Program specialising in the US.</p>
         <p>Content is migrated from WordPress.com and attributed to the original project under a Creative Commons Attribution 4.0 International license.</p>
       </section>
